@@ -6,7 +6,7 @@
 	<base href="<?php $url_info = parse_url( site_url() ); echo trailingslashit( $url_info['path'] ); ?>">
 
 	<title>Wordular Angpress</title>
-	
+
 	<?php wp_head(); ?>
 
 </head>
@@ -16,7 +16,7 @@
 	<header>
 		<h1>
 			<a href="<?php echo site_url(); ?>">
-				Wordular Angpress
+				<?php echo bloginfo('name'); ?>
 			</a>
 		</h1>
 	</header>

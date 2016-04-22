@@ -7,8 +7,20 @@ angular.module('app', ['ngRoute'])
 	.when('/', {
 		templateUrl: wangular_localized.partials + 'main.html',
 		controller: 'Main'
+	})
+	.when('/:ID', {
+		templateUrl: wangular_localized.partials + 'content.html',
+		controller: 'Content'
+	});
+
+})
+.controller('Main', function($scope, $http, $routeParams) {
+	$http.get('wp-json/posts').success(function(res){
+		$scope.posts = res;
 	});
 })
-.controller('Main', function() {
-	console.log('Main file loaded.');
+.controller('Content', function($scope, $http, $routeParams) {
+	$http.get('wp-json/posts/' + $routeParams.ID).success(function(res){
+		$scope.post = res;
+	});
 });
