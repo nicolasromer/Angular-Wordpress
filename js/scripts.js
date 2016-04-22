@@ -1,4 +1,4 @@
-angular.module('app', ['ngRoute'])
+angular.module('app', ['ngRoute', 'ngSanitize'])
 .config(function( $routeProvider, $locationProvider ) {
 
 	$locationProvider.html5Mode(true);
@@ -23,4 +23,10 @@ angular.module('app', ['ngRoute'])
 	$http.get('wp-json/posts/' + $routeParams.ID).success(function(res){
 		$scope.post = res;
 	});
-});
+})
+
+    .filter('toTrusted', ['$sce', function($sce) {
+        return function(text) {
+            return $sce.trustAsHtml(text);
+        };
+    }]);

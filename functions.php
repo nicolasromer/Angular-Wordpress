@@ -10,10 +10,14 @@ function wangular_scripts() {
 		'angularjs-route',
 		get_stylesheet_directory_uri() . '/node_modules/angular-route/angular-route.min.js'
 	);
+	wp_register_script(
+		'angularjs-sanitize',
+		get_stylesheet_directory_uri() . '/node_modules/angular-sanitize/angular-sanitize.min.js'
+	);
 	wp_enqueue_script(
 		'wangular-scripts',
 		get_stylesheet_directory_uri() . '/js/scripts.js',
-		array( 'angularjs', 'angularjs-route' )
+		array( 'angularjs', 'angularjs-route', 'angularjs-sanitize' )
 	);
 	wp_localize_script(
 		'wangular-scripts',
